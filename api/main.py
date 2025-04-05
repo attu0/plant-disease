@@ -8,7 +8,7 @@ import tensorflow as tf
 from fastapi.templating import Jinja2Templates
 
 # Load your model saved in .h5 format
-MODEL = tf.keras.models.load_model("../saved_models/50.h5")
+MODEL = tf.keras.models.load_model("../saved_models/1.h5")
 
 app = FastAPI()
 
@@ -28,8 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
-PLANT_TYPE = "Potato"  # This will be dynamic in future versions
+CLASS_NAMES = ['Pepper__bell___Bacterial_spot','Pepper__bell___healthy','Potato___Early_blight','Potato___Late_blight','Potato___healthy','Tomato_Bacterial_spot','Tomato_Early_blight','Tomato_Late_blight','Tomato_Leaf_Mold','Tomato_Septoria_leaf_spot','Tomato_Spider_mites_Two_spotted_spider_mite','Tomato__Target_Spot','Tomato__Tomato_YellowLeaf__Curl_Virus','Tomato__Tomato_mosaic_virus','Tomato_healthy']
 
 def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)))
@@ -46,7 +45,6 @@ async def predict(file: UploadFile = File(...)):
     confidence = np.max(predictions[0])
 
     return {
-        'plant_type': PLANT_TYPE,
         'class': predicted_class,
         'confidence': float(confidence)
     }
