@@ -1,0 +1,35 @@
+.toggleContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toggleButton {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.toggleButton:hover {
+  background-color: #e0e0e0;
+}
+
+.toggleButton.active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.languageText {
+  font-size: 14px;
+  font-weight: 600;
+} 

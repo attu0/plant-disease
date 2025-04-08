@@ -6,12 +6,21 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 from fastapi.templating import Jinja2Templates
-
-# Load your model saved in .h5 format
-MODEL = tf.keras.models.load_model("../saved_models/1.h5")
+import os
 
 app = FastAPI()
 
+# Load the model without custom objects first
+model = tf.keras.models.load_model("../saved_models/50_20.h5", compile=False)
+
+# Recompile the model with the correct loss function
+model.compile(
+    optimizer='adam',
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=['accuracy']
+)
+
+MODEL = model
 
 origins = [
     "http://localhost",

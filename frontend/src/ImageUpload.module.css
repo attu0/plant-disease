@@ -1,0 +1,60 @@
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 2rem;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  /* background-color: white; */
+  transition: all 0.2s ease-in-out;
+}
+
+.dropzone:hover {
+  background-color: #f8f9fab1;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dragging {
+  border-color: #4a90e2;
+  background-color: #f0f8ff;
+}
+
+.fileInput {
+  display: none;
+}
+
+.mainText {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.supportText {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.icon {
+  display: inline-block;
+  font-size: 2.5rem;
+  color: #4a90e2;
+  margin-bottom: 15px;
+  transform: rotate(0deg); /* Ensure icon is not tilted */
+  transition: transform 0.3s ease;
+}
+
+.dropzone:hover .icon {
+  transform: scale(1.1);
+}
+
+/* Add a subtle animation for the dragging state */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.dragging {
+  animation: pulse 1.5s infinite;
+} 
